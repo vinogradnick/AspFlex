@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Electricity.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ElectricityStoreContainer">
+    <EntitySet Name="FiderSet" EntityType="Electricity.Store.FiderSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TpSet" EntityType="Electricity.Store.TpSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LineSet" EntityType="Electricity.Store.LineSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CustomerSet" EntityType="Electricity.Store.CustomerSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FiderTp" Association="Electricity.Store.FiderTp">
+      <End Role="Fider" EntitySet="FiderSet" />
+      <End Role="Tp" EntitySet="TpSet" />
+    </AssociationSet>
+    <AssociationSet Name="TpLine" Association="Electricity.Store.TpLine">
+      <End Role="Tp" EntitySet="TpSet" />
+      <End Role="Line" EntitySet="LineSet" />
+    </AssociationSet>
+    <AssociationSet Name="LineCustomer" Association="Electricity.Store.LineCustomer">
+      <End Role="Line" EntitySet="LineSet" />
+      <End Role="Customer" EntitySet="CustomerSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="FiderSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Power" Type="int" Nullable="false" />
+    <Property Name="Voltage" Type="int" Nullable="false" />
+    <Property Name="Geocode" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TpSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Power" Type="int" Nullable="false" />
+    <Property Name="Voltage" Type="int" Nullable="false" />
+    <Property Name="Geocode" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FiderId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LineSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Power" Type="int" Nullable="false" />
+    <Property Name="Voltage" Type="int" Nullable="false" />
+    <Property Name="Geocode" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TpId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CustomerSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ObjectName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PlaceInstall" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Category" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LineId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FiderTp">
+    <End Role="Fider" Type="Electricity.Store.FiderSet" Multiplicity="1" />
+    <End Role="Tp" Type="Electricity.Store.TpSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fider">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tp">
+        <PropertyRef Name="FiderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TpLine">
+    <End Role="Tp" Type="Electricity.Store.TpSet" Multiplicity="1" />
+    <End Role="Line" Type="Electricity.Store.LineSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tp">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Line">
+        <PropertyRef Name="TpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LineCustomer">
+    <End Role="Line" Type="Electricity.Store.LineSet" Multiplicity="1" />
+    <End Role="Customer" Type="Electricity.Store.CustomerSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Line">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="LineId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Electricity" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ElectricityContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FiderSet" EntityType="Electricity.Fider" />
+          <EntitySet Name="TpSet" EntityType="Electricity.Tp" />
+          <EntitySet Name="LineSet" EntityType="Electricity.Line" />
+          <EntitySet Name="CustomerSet" EntityType="Electricity.Customer" />
+          <AssociationSet Name="FiderTp" Association="Electricity.FiderTp">
+            <End Role="Fider" EntitySet="FiderSet" />
+            <End Role="Tp" EntitySet="TpSet" />
+          </AssociationSet>
+          <AssociationSet Name="TpLine" Association="Electricity.TpLine">
+            <End Role="Tp" EntitySet="TpSet" />
+            <End Role="Line" EntitySet="LineSet" />
+          </AssociationSet>
+          <AssociationSet Name="LineCustomer" Association="Electricity.LineCustomer">
+            <End Role="Line" EntitySet="LineSet" />
+            <End Role="Customer" EntitySet="CustomerSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Fider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Power" Type="Int32" Nullable="false" />
+          <Property Name="Voltage" Type="Int32" Nullable="false" />
+          <Property Name="Geocode" Type="String" Nullable="false" />
+          <NavigationProperty Name="Tp" Relationship="Electricity.FiderTp" FromRole="Fider" ToRole="Tp" />
+        </EntityType>
+        <EntityType Name="Tp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Power" Type="Int32" Nullable="false" />
+          <Property Name="Voltage" Type="Int32" Nullable="false" />
+          <Property Name="Geocode" Type="String" Nullable="false" />
+          <NavigationProperty Name="Fider" Relationship="Electricity.FiderTp" FromRole="Tp" ToRole="Fider" />
+          <Property Name="FiderId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Line" Relationship="Electricity.TpLine" FromRole="Tp" ToRole="Line" />
+        </EntityType>
+        <EntityType Name="Line">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Power" Type="Int32" Nullable="false" />
+          <Property Name="Voltage" Type="Int32" Nullable="false" />
+          <Property Name="Geocode" Type="String" Nullable="false" />
+          <NavigationProperty Name="Tp" Relationship="Electricity.TpLine" FromRole="Line" ToRole="Tp" />
+          <Property Name="TpId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Electricity.LineCustomer" FromRole="Line" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="ObjectName" Type="String" Nullable="false" />
+          <Property Name="PlaceInstall" Type="String" Nullable="false" />
+          <Property Name="Adress" Type="String" Nullable="false" />
+          <Property Name="Category" Type="String" Nullable="false" />
+          <NavigationProperty Name="Line" Relationship="Electricity.LineCustomer" FromRole="Customer" ToRole="Line" />
+          <Property Name="LineId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FiderTp">
+          <End Type="Electricity.Fider" Role="Fider" Multiplicity="1" />
+          <End Type="Electricity.Tp" Role="Tp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fider">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tp">
+              <PropertyRef Name="FiderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TpLine">
+          <End Type="Electricity.Tp" Role="Tp" Multiplicity="1" />
+          <End Type="Electricity.Line" Role="Line" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tp">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Line">
+              <PropertyRef Name="TpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LineCustomer">
+          <End Type="Electricity.Line" Role="Line" Multiplicity="1" />
+          <End Type="Electricity.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Line">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="LineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ElectricityStoreContainer" CdmEntityContainer="ElectricityContainer">
+    <EntitySetMapping Name="FiderSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Electricity.Fider)">
+        <MappingFragment StoreEntitySet="FiderSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Power" ColumnName="Power" />
+          <ScalarProperty Name="Voltage" ColumnName="Voltage" />
+          <ScalarProperty Name="Geocode" ColumnName="Geocode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TpSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Electricity.Tp)">
+        <MappingFragment StoreEntitySet="TpSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Power" ColumnName="Power" />
+          <ScalarProperty Name="Voltage" ColumnName="Voltage" />
+          <ScalarProperty Name="Geocode" ColumnName="Geocode" />
+          <ScalarProperty Name="FiderId" ColumnName="FiderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LineSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Electricity.Line)">
+        <MappingFragment StoreEntitySet="LineSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Power" ColumnName="Power" />
+          <ScalarProperty Name="Voltage" ColumnName="Voltage" />
+          <ScalarProperty Name="Geocode" ColumnName="Geocode" />
+          <ScalarProperty Name="TpId" ColumnName="TpId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Electricity.Customer)">
+        <MappingFragment StoreEntitySet="CustomerSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ObjectName" ColumnName="ObjectName" />
+          <ScalarProperty Name="PlaceInstall" ColumnName="PlaceInstall" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="LineId" ColumnName="LineId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

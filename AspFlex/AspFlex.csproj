@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1D272318-6A73-4D66-93B7-FBBE3C390348}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>AspFlex</RootNamespace>
+    <AssemblyName>AspFlex</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AdvancedDataGridView, Version=0.1.0.10, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ADGV.0.1.0.10\lib\net40\AdvancedDataGridView.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Faker, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Faker.1.2\lib\Faker.dll</HintPath>
+    </Reference>
+    <Reference Include="FastColoredTextBox, Version=2.16.24.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL">
+      <HintPath>..\packages\FCTB.2.16.24\lib\FastColoredTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Highlight, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Highlight.4.0.0\lib\net40\Highlight.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Unity.Abstractions, Version=4.1.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Abstractions.4.1.3\lib\net46\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.10.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Container.5.10.3\lib\net46\Unity.Container.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\CodeGeneratorController.cs" />
+    <Compile Include="Controllers\CustomEventArgs.cs" />
+    <Compile Include="Controllers\DbSingleton.cs" />
+    <Compile Include="Controllers\RequestPageController.cs" />
+    <Compile Include="ElectricityDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ElectricityDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ElectricityDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ElectricityDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ElectricityDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ElectricityDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ElectricityDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ElectricityDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ElectricityDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ElectricityDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ElectricityDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ElectricityDataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PassiveView\AddObject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PassiveView\AddObject.Designer.cs">
+      <DependentUpon>AddObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ChangeObjectController.cs" />
+    <Compile Include="Controllers\CreateObjectController.cs" />
+    <Compile Include="PassiveView\CodeGeneratorPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PassiveView\CodeGeneratorPage.Designer.cs">
+      <DependentUpon>CodeGeneratorPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PassiveView\IAddObjectView.cs" />
+    <Compile Include="PassiveView\ICodeGeneratorView.cs" />
+    <Compile Include="PassiveView\IRemoveObjectView.cs" />
+    <Compile Include="PassiveView\IRequestPage.cs" />
+    <Compile Include="PassiveView\IView.cs" />
+    <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Customer.cs">
+      <DependentUpon>Electricity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Electricity.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Electricity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Electricity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Electricity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Electricity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Electricity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Fider.cs">
+      <DependentUpon>Electricity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PassiveView\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PassiveView\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Line.cs">
+      <DependentUpon>Electricity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PassiveView\RemoveObject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PassiveView\RemoveObject.Designer.cs">
+      <DependentUpon>RemoveObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PassiveView\RequestPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PassiveView\RequestPage.Designer.cs">
+      <DependentUpon>RequestPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Remove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Remove.Designer.cs">
+      <DependentUpon>Remove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\RemoveObjectController.cs" />
+    <Compile Include="RepositoryManager_\CustomerRepository.cs" />
+    <Compile Include="RepositoryManager_\FiderRepository.cs" />
+    <Compile Include="RepositoryManager_\IBaseRepository.cs" />
+    <Compile Include="RepositoryManager_\IRepository.cs" />
+    <Compile Include="RepositoryManager_\IRepositoryManager.cs" />
+    <Compile Include="RepositoryManager_\LineRepository.cs" />
+    <Compile Include="RepositoryManager_\RepositoryManager.cs" />
+    <Compile Include="RepositoryManager_\RequestMN.cs" />
+    <Compile Include="RepositoryManager_\SectionRepository.cs" />
+    <Compile Include="RepositoryManager_\TpRepository.cs" />
+    <Compile Include="RepositoryManager_\WorkloadRepository.cs" />
+    <Compile Include="Review.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Review.Designer.cs">
+      <DependentUpon>Review.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tp.cs">
+      <DependentUpon>Electricity.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="PassiveView\AddObject.resx">
+      <DependentUpon>AddObject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PassiveView\CodeGeneratorPage.resx">
+      <DependentUpon>CodeGeneratorPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PassiveView\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PassiveView\RemoveObject.resx">
+      <DependentUpon>RemoveObject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PassiveView\RequestPage.resx">
+      <DependentUpon>RequestPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Review.resx">
+      <DependentUpon>Review.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Electricity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Electricity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Electricity.edmx.diagram">
+      <DependentUpon>Electricity.edmx</DependentUpon>
+    </None>
+    <None Include="ElectricityDataSet.xsc">
+      <DependentUpon>ElectricityDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ElectricityDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ElectricityDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ElectricityDataSet.xss">
+      <DependentUpon>ElectricityDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ElectricityDataSet1.xsc">
+      <DependentUpon>ElectricityDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ElectricityDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ElectricityDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ElectricityDataSet1.xss">
+      <DependentUpon>ElectricityDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ElectricityDataSet2.xsc">
+      <DependentUpon>ElectricityDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="ElectricityDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ElectricityDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ElectricityDataSet2.xss">
+      <DependentUpon>ElectricityDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="ElectricityDataSet3.xsc">
+      <DependentUpon>ElectricityDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="ElectricityDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ElectricityDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ElectricityDataSet3.xss">
+      <DependentUpon>ElectricityDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="ElectricityDataSet4.xsc">
+      <DependentUpon>ElectricityDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="ElectricityDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ElectricityDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ElectricityDataSet4.xss">
+      <DependentUpon>ElectricityDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="ElectricityDataSet5.xsc">
+      <DependentUpon>ElectricityDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="ElectricityDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ElectricityDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ElectricityDataSet5.xss">
+      <DependentUpon>ElectricityDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Electricity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Electricity.Context.cs</LastGenOutput>
+      <DependentUpon>Electricity.edmx</DependentUpon>
+    </Content>
+    <Content Include="Electricity.edmx.sql" />
+    <Content Include="Electricity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Electricity.cs</LastGenOutput>
+      <DependentUpon>Electricity.edmx</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
